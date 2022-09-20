@@ -23,17 +23,18 @@ axiosClient.intercepters.request.use(
 // API ={method:"post", url:"/x/:id/:uid"}
 const httpClient = async (API, params = null, data = null) => {
   const URL = urlcat(API, params);
-  if (API.MEHTOD == METHOD.GET)   return new Promise ((resolve,reject)=>{
-
-    axiosClient[API.METHOD](URL).then((data)=> resolve(data)).catch((e)=> reject(e));
-
- })
+  if (API.MEHTOD == METHOD.GET)
+    return new Promise((resolve, reject) => {
+      axiosClient[API.METHOD](URL)
+        .then((data) => resolve(data))
+        .catch((e) => reject(e));
+    });
   else {
-    return new Promise ((resolve,reject)=>{
-
-     axiosClient[API.METHOD](URL, data).then((data)=> resolve(data)).catch((e)=> reject(e));
-
-  })
-}
+    return new Promise((resolve, reject) => {
+      axiosClient[API.METHOD](URL, data)
+        .then((data) => resolve(data))
+        .catch((e) => reject(e));
+    });
+  }
 };
 export { METHOD, httpClient };
