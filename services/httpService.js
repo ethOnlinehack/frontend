@@ -6,12 +6,12 @@ const METHOD = { GET: "get", POST: "post", PUT: "put", DELETE: "delete" };
 
 // create client instance
 const axiosClient = axios.create({
-  baseURL: "https://some-domain.com/api/",
+  baseURL: baseURL,
   timeout: 5000,
   headers: { "X-Custom-Header": "foobar" },
 });
 // check headers
-axiosClient.intercepters.request.use(
+axiosClient.interceptors.request.use(
   (config) => {
     config.headers.Authorization = "Bearer MYTOKEN";
     return config;
@@ -22,17 +22,19 @@ axiosClient.intercepters.request.use(
 );
 // API ={method:"post", url:"/x/:id/:uid"}
 const httpClient = async (API, params = null, data = null) => {
-  const URL = urlcat(API, params);
-  if (API.MEHTOD == METHOD.GET)
-    return new Promise((resolve, reject) => {
-      axiosClient[API.METHOD](URL)
-        .then((data) => resolve(data))
+  const URL = urlcat(API.URL, params);
+  if (API.METHOD == METHOD.GET) {
+    return new Promise(async (resolve, reject) => {
+      await axiosClient[API.METHOD](URL)
+        .then((data) => {
+          resolve(data.data);
+        })
         .catch((e) => reject(e));
     });
-  else {
-    return new Promise((resolve, reject) => {
-      axiosClient[API.METHOD](URL, data)
-        .then((data) => resolve(data))
+  } else {
+    return new Promise(async (resolve, reject) => {
+      await axiosClient[API.METHOD](URL, data)
+        .then((data) => resolve(data.data))
         .catch((e) => reject(e));
     });
   }
