@@ -18,5 +18,9 @@ export const API = {
         METHOD: METHOD.POST,
         URL: "/user/logout",
     },
+    SIGNIN:{
+      METHOD: METHOD.POST,
+      URL: "/user/check-token",
+    }
   }
 };

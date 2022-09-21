@@ -13,8 +13,12 @@ const logout = (data) => {
   return httpClient(API.USER.LOGOUT, null, data);
 };
 
+const signIn = () => {
+  return httpClient(API.USER.SIGNIN, null, null);
+};
+
 const testaa = (data) => {
     return httpClient(API.TEST, null, null);
   };
   
-export { login, register, logout, testaa };
+export { login, register, logout, testaa, signIn };
