@@ -1,6 +1,6 @@
 import "../styles/globals.css";
-
-import { AuthProvider } from "../contexts/Auth";
+import 'antd/dist/antd.css'; 
+import { AuthProvider, useAuth } from "../contexts/Auth";
 
 function MyApp({ Component, pageProps }) {
   return (
