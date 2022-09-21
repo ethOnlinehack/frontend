@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import SignupForm from "../components/SignupForm";
 import LoginForm from "../components/loginForm";
 import { useEffect } from "react";
@@ -13,6 +13,7 @@ export default function Home() {
   useEffect(() => {}, []);
   return (
     <div className={styles.container}>
+    <ButtonComponent>HIII</ButtonComponent>
         <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
         <Link href="/test">
         <button>test </button>
