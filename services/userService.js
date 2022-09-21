@@ -1,8 +1,20 @@
 import { httpClient } from "./httpService";
 import { API } from "./routes";
 
-const login = (params, data) => {
-  return httpClient(API.INDEX, params, data);
+const login = (data) => {
+  return httpClient(API.USER.LOGIN, null, data);
 };
 
-export { login };
+const register = (data) => {
+  return httpClient(API.USER.REGISTER, null, data);
+};
+
+const logout = (data) => {
+  return httpClient(API.USER.LOGOUT, null, data);
+};
+
+const testaa = (data) => {
+    return httpClient(API.TEST, null, null);
+  };
+  
+export { login, register, logout, testaa };

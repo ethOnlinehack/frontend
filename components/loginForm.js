@@ -22,8 +22,7 @@ const LoginForm = () => (
         return errors;
       }}
       onSubmit={async (values, { setSubmitting }) => {
-        const x = await login(null,null)
-        console.log(x);
+        const x = await login(values)
         setSubmitting(false);
       }}
     >
