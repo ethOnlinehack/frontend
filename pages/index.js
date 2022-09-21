@@ -6,13 +6,15 @@ import LoginForm from "../components/loginForm";
 import { useEffect } from "react";
 import { useAuth } from "../contexts/Auth";
 import Link from "next/link";
+import ButtonComponent from "../components/Button";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {}, []);
   return (
     <div className={styles.container}>
-      <Link href="/test">
+        <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
+        <Link href="/test">
         <button>test </button>
       </Link>
       {user && user.email}
