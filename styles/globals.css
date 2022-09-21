@@ -6,6 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+h1, p {
+  font-family: Lato;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -21,6 +24,6 @@ a {
   }
   body {
     color: white;
-    background: black;
+    background: #111927;
   }
 }
