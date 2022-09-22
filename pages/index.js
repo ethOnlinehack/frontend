@@ -29,8 +29,8 @@ export default function Home() {
     
   }
   return (
-    <div><Navbar/>
-    <div className={styles.container}>
+    <div>
+    <div style={{height:"2000px"}} className={styles.container}>
 
     <ButtonComponent>HIII</ButtonComponent>
    <FileUpload withCredentials={true} url={API.FILE_UPLOAD.URL} maxCount={1} onChange={handleChange}/>
