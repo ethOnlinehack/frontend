@@ -1,8 +1,10 @@
 import React from "react";
-import "../styles/signupForm.module.css";
 import { Formik, Form, ErrorMessage } from "formik";
-import TextField from "./textField";
+import InputText from "../Form/InputText/index";
 import * as Yup from "yup";
+import css from "./form.module.scss"
+import ButtonComponent from "../Button";
+
 
 export default function SignupForm() {
   const validate = Yup.object({
@@ -14,7 +16,7 @@ export default function SignupForm() {
       .required("Password Required!"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Password must match!")
-      .required("Confirm password is reqired!"),
+      .required("Confirm password is required!"),
   });
 
   return (
@@ -27,59 +29,52 @@ export default function SignupForm() {
         }}
       >
         {(formik) => (
-          <div>
-            <h1 className="">Signup</h1>
+          <div className={css.font}>
             <Form className="form p-3">
-              <TextField
+                <label style={{marginTop: "100px"}}>
+                    First Name
+              <InputText
                 type="text"
-                label="Firstname"
                 name="firstName"
                 placeholder="Lorem"
               />
-              <TextField
+              </label>
+              <label>
+                Last Name
+              <InputText
                 type="text"
                 name="lastName"
-                label="Lastname"
                 placeholder="Ipsum"
               />
-              <TextField
+              </label>
+              <label>
+                Email
+              <InputText
                 type="email"
                 name="email"
-                label="Email"
                 placeholder="loremipsum@gmail.com"
               />
-              <TextField
-                type="text"
+              </label>
+              <label>
+                Password
+              <InputText
+                type="password"
                 name="password"
-                label="Password"
                 placeholder="qwert@123"
               />
-              <div className="mb-2">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
-                  id="confirmPassword"
-                  className={`form-control shadow-none ${
-                    formik.touched.confirmPassword &&
-                    formik.errors.confirmPassword &&
-                    "is-invalid"
-                  }`}
-                  type="text"
-                  name="confirmPassword"
-                  placeholder="confirm password..."
-                  {...formik.getFieldProps("confirmPassword")}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="confirmPassword"
-                  className="error"
-                />
-              </div>
-              <button className="btn btn-dark m-3" type="submit">
-                Register
-              </button>
-              <button className="btn btn-primary m-3" type="reset">
-                Reset
-              </button>
+              </label>
+              <div>
+                <label>
+                    Confirm Password
+              <InputText
+                type="password"
+                name="confirmPassword"
+                placeholder="qwert@123"
+              />
+              </label>
+              <ButtonComponent style={{width:"100%"}} type="submit" >Sign up</ButtonComponent>
+</div>
+            
             </Form>
           </div>
         )}
