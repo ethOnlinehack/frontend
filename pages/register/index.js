@@ -8,7 +8,7 @@ import SimpleCard from "../../components/SimpleCard";
 import { register } from "../../services/userService";
 import Router  from "next/router";
 
-export default function SignupForm() {
+export default function Register() {
   const [loading, setLoading] = useState(false);
   const validate = Yup.object({
     first_name: Yup.string().required("Firstname Required!"),
