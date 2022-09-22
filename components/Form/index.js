@@ -3,6 +3,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import InputText from "../Form/InputText/index";
 import * as Yup from "yup";
 import css from "./form.module.scss"
+import ButtonComponent from "../Button";
 
 
 export default function SignupForm() {
@@ -71,11 +72,9 @@ export default function SignupForm() {
                 placeholder="qwert@123"
               />
               </label>
-
+              <ButtonComponent style={{width:"100%"}} type="submit" >Sign up</ButtonComponent>
 </div>
-              <button className="btn btn-primary m-3" type="submit">
-                Register
-              </button>
+            
             </Form>
           </div>
         )}

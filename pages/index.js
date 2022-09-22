@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import SignupForm from "../components/Form/index";
 import LoginForm from "../components/loginForm";
 import { useEffect } from "react";
@@ -9,6 +9,7 @@ import Link from "next/link";
 import ButtonComponent from "../components/Button";
 import FileUpload from "../components/Upload";
 import { API } from "../services/routes";
+import SimpleCard from "../components/SimpleCard";
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {}, []);
