@@ -6,6 +6,7 @@ import ButtonComponent from "../../components/Button";
 import InputText from "../../components/Form/InputText";
 import SimpleCard from "../../components/SimpleCard";
 import { register } from "../../services/userService";
+import Router  from "next/router";
 
 export default function SignupForm() {
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function SignupForm() {
             register(values)
               .then((data) => {
                 console.log(data);
+                Router.push("/login")
               })
               .finally(() => {
                 setLoading(false);
