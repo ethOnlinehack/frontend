@@ -10,6 +10,8 @@ import ButtonComponent from "../components/Button";
 import FileUpload from "../components/Upload";
 import { API } from "../services/routes";
 import SimpleCard from "../components/SimpleCard";
+import Navbar from "../components/Navbar/index"
+
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {}, []);
@@ -27,7 +29,9 @@ export default function Home() {
     
   }
   return (
-    <div className={styles.container}>
+    <div>
+    <div style={{height:"2000px"}} className={styles.container}>
+
     <ButtonComponent>HIII</ButtonComponent>
    <FileUpload withCredentials={true} url={API.FILE_UPLOAD.URL} maxCount={1} onChange={handleChange}/>
         <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
@@ -43,6 +47,7 @@ export default function Home() {
         <SignupForm/>
       </SimpleCard>
       </div>
+    </div>
     </div>
   );
 }
