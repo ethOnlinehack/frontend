@@ -72,7 +72,7 @@ export default function SignupForm() {
                 placeholder="qwert@123"
               />
               </label>
-              <ButtonComponent style={{width:"100%"}} type="submit" >Sign up</ButtonComponent>
+              <ButtonComponent style={{width:"100%"}} htmlType="submit" >Sign up</ButtonComponent>
 </div>
             
             </Form>
