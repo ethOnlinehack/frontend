@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
-import TextField from "../Form/InputText/index";
+import InputText from "../Form/InputText/index";
 import * as Yup from "yup";
 import css from "./form.module.scss"
 
@@ -32,7 +32,7 @@ export default function SignupForm() {
             <Form className="form p-3">
                 <label style={{marginTop: "100px"}}>
                     First Name
-              <TextField
+              <InputText
                 type="text"
                 name="firstName"
                 placeholder="Lorem"
@@ -40,7 +40,7 @@ export default function SignupForm() {
               </label>
               <label>
                 Last Name
-              <TextField
+              <InputText
                 type="text"
                 name="lastName"
                 placeholder="Ipsum"
@@ -48,7 +48,7 @@ export default function SignupForm() {
               </label>
               <label>
                 Email
-              <TextField
+              <InputText
                 type="email"
                 name="email"
                 placeholder="loremipsum@gmail.com"
@@ -56,7 +56,7 @@ export default function SignupForm() {
               </label>
               <label>
                 Password
-              <TextField
+              <InputText
                 type="password"
                 name="password"
                 placeholder="qwert@123"
@@ -65,7 +65,7 @@ export default function SignupForm() {
               <div>
                 <label>
                     Confirm Password
-              <TextField
+              <InputText
                 type="password"
                 name="confirmPassword"
                 placeholder="qwert@123"
@@ -73,11 +73,8 @@ export default function SignupForm() {
               </label>
 
 </div>
-              <button className="btn btn-dark m-3" type="submit">
+              <button className="btn btn-primary m-3" type="submit">
                 Register
-              </button>
-              <button className="btn btn-primary m-3" type="reset">
-                Reset
               </button>
             </Form>
           </div>

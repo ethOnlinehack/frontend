@@ -19,9 +19,13 @@ export default function Home() {
       </Link>
       {user && user.email}
       <LoginForm />
+      <div style={{display: "flex",
+    alignItems: "center",
+    justifyContent: "center"}}>
       <SimpleCard>
         <SignupForm/>
       </SimpleCard>
+      </div>
     </div>
   );
 }

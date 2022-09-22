@@ -1,6 +1,6 @@
 .simplecard{
     background: #232B39;
-    height:461px;
+    height:100%;
     width:315px;
     align-self: center;
     border: 0.5px solid #2c613b;
@@ -9,4 +9,7 @@
     margin-top: 10px;
     padding-top:25px;
     padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
