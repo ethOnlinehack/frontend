@@ -1,0 +1,24 @@
+.Card {
+    border-color: var(--gray);
+    text-align: center;
+
+  :global(.ant-card-body) {
+    background-color: var(--gray);
+    color:white;
+
+  }
+  :global(.ant-card-meta-title){
+    color:white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  :global(.ant-card-actions){
+    background-color: var(--gray);
+    color:white;
+
+
+  }
+}
