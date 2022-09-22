@@ -6,15 +6,31 @@ import LoginForm from "../components/loginForm";
 import { useEffect } from "react";
 import { useAuth } from "../contexts/Auth";
 import Link from "next/link";
-import SimpleCard from "../components/SimpleCard/index"
-
-
+import ButtonComponent from "../components/Button";
+import FileUpload from "../components/Upload";
+import { API } from "../services/routes";
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {}, []);
+  const handleChange =(info)=>{
+   
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+  
+      if (info.file.status === 'done') {
+        console.log(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        console.error(`${info.file.name} file upload failed.`);
+      }
+    
+  }
   return (
     <div className={styles.container}>
-      <Link href="/test">
+    <ButtonComponent>HIII</ButtonComponent>
+   <FileUpload withCredentials={true} url={API.FILE_UPLOAD.URL} maxCount={1} onChange={handleChange}/>
+        <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
+        <Link href="/test">
         <button>test </button>
       </Link>
       {user && user.email}

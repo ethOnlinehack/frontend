@@ -1,5 +1,5 @@
-import "../styles/globals.css";
-
+import 'antd/dist/antd.css'; 
+import "../styles/globals.scss";
 import { AuthProvider } from "../contexts/Auth";
 
 
