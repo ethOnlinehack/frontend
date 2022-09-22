@@ -30,7 +30,7 @@ export default function SignupForm() {
         justifyContent: "center",
       }}
     >
-      <SimpleCard>
+      <SimpleCard title="Sign up to the app">
         <Formik
           initialValues={initialValues}
           validationSchema={validate}
