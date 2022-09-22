@@ -32,7 +32,7 @@ export default function SignupForm() {
           <div className={css.font}>
             <Form className="form p-3">
                 <label style={{marginTop: "100px"}}>
-                    First Name
+                    First Name 
               <InputText
                 type="text"
                 name="firstName"
