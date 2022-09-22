@@ -25,3 +25,9 @@ justify-content: center;
     border-color: var(--secondary-color);
 
 }
+
+.btn:focus{
+    background-color: var(--secondary-color);
+    color:white;
+    
+}
