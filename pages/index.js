@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
-import SignupForm from "../components/SignupForm";
+import SignupForm from "../components/Form/index";
 import LoginForm from "../components/loginForm";
 import { useEffect } from "react";
 import { useAuth } from "../contexts/Auth";
@@ -9,7 +9,13 @@ import Link from "next/link";
 import ButtonComponent from "../components/Button";
 import FileUpload from "../components/Upload";
 import { API } from "../services/routes";
+
 import CardImage from "../components/CardImage";
+
+import SimpleCard from "../components/SimpleCard";
+import Navbar from "../components/Navbar/index"
+
+
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {}, []);
@@ -27,8 +33,9 @@ export default function Home() {
     
   }
   return (
-    <div className={styles.container}>
-    <CardImage/>
+    <div>
+    <div style={{height:"2000px"}} className={styles.container}>
+
     <ButtonComponent>HIII</ButtonComponent>
    <FileUpload withCredentials={true} url={API.FILE_UPLOAD.URL} maxCount={1} onChange={handleChange}/>
         <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
@@ -37,6 +44,14 @@ export default function Home() {
       </Link>
       {user && user.email}
       <LoginForm />
+      <div style={{display: "flex",
+    alignItems: "center",
+    justifyContent: "center"}}>
+      <SimpleCard>
+        <SignupForm/>
+      </SimpleCard>
+      </div>
+    </div>
     </div>
   );
 }

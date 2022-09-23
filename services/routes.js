@@ -27,4 +27,10 @@ export const API = {
     METHOD: METHOD.POST,
     URL: "/file/upload",
   },
+  GAME:{
+      CREATE:{
+        METHOD: METHOD.POST,
+        URL: "/game/create",
+      }
+    },
 };
