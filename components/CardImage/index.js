@@ -26,16 +26,7 @@ const CardImage = () => (
       
     }
   >
-        <Menu mode="horizontal" style={{opacity:"20%", width:"64px"}}>
-    <Menu.SubMenu key="SubMenu" icon={<MenuOutlined />} >
-      <Menu.Item key="two" icon={<EditOutlined  />}>
-        Edit
-      </Menu.Item>
-      <Menu.Item key="three" icon={<DeleteOutlined />}>
-        Delete
-      </Menu.Item>
-      </Menu.SubMenu>
-    </Menu>
+ 
     <Meta style={{height:"20px", color:"white", fontSize:"50px",textAlign:"center"}}  title="RobinMania" />
 
   </Card>
