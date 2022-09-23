@@ -2,9 +2,12 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
 import ButtonComponent from '../Button';
 import css from './navbar.module.scss';
+import { Col, Row } from "antd";
+
 const { Header, Content, Footer } = Layout;
 
 const Navbar = () => (
+  <Row gutter={24}>
   <Layout className={css.navbar}>
     <Header 
       style={{
@@ -19,11 +22,30 @@ const Navbar = () => (
         mode="horizontal"
         
       >
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Team</Menu.Item>
-        <Menu.Item key="3">Services</Menu.Item>
-        <Menu.Item key="4" style={{position:"absolute", left:"50px", float:"left"}}>Lorem</Menu.Item>
-        <Menu.Item key="button" style={{position:"absolute", right:"50px", float:"right", marginTop:"16px"}}><ButtonComponent>Sign in</ButtonComponent></Menu.Item>
+        <Col span={3} style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+        <Menu.Item className="hover" key="4" style={{color:"white"}} >Lorem</Menu.Item>
+        </Col>
+        <Col span={18} style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }} >
+        <Menu.Item className="hover" key="1" style={{display:"inline", color:"white"}}>Home</Menu.Item>
+        <Menu.Item className="hover" key="2" style={{display:"inline", color:"white"}}>Team</Menu.Item>
+        <Menu.Item className="hover" key="3" style={{display:"inline", color:"white"}}>Services</Menu.Item>
+        </Col>
+        <Col span={3}           style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+        <Menu.Item key="button"  ><ButtonComponent>Sign in</ButtonComponent></Menu.Item>
+        {/* <p style={{marginBottom:"0"}}>hi</p> */}
+        </Col>
         </Menu>
 
     </Header>
@@ -54,6 +76,7 @@ const Navbar = () => (
       </div>
     </Content> */}
   </Layout>
+  </Row>
 );
 
 export default Navbar;

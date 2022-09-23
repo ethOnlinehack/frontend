@@ -3,7 +3,8 @@ import React from "react";
 const { Meta } = Card;
 import { EditOutlined, DeleteOutlined   } from '@ant-design/icons';
 import { Menu } from 'antd';
-import css from "./cardImage.module.scss"
+import css from "./cardImage.module.scss";
+import Image from 'next/image';
 const CardImage = ({image})=> (
   <Card
     className={css.Card}
@@ -18,10 +19,7 @@ const CardImage = ({image})=> (
     ]}
     cover={
       
-      <img
-        alt="example"
-        src={image}
-      />
+      <Image src={image} alt="example" layout="responsive" width="100px" height="100px"/>
       
     }
   >
