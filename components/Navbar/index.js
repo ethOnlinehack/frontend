@@ -4,10 +4,13 @@ import Link from "next/link";
 import ButtonComponent from '../Button';
 import css from './navbar.module.scss';
 import { Col, Row } from "antd";
+import { useAuth } from "../../contexts/Auth/index";
 
 const { Header, Content, Footer } = Layout;
 
-const Navbar = () => (
+const Navbar = () => {
+  const { user, isAuthenticated } = useAuth();
+  return(
   <Row gutter={24}>
   <Layout className={css.navbar}>
     <Header 
@@ -44,8 +47,11 @@ const Navbar = () => (
             alignItems: "center",
             justifyContent: "center",
           }}>
-            
-        <Menu.Item key="button"  > <Link href="/login"><ButtonComponent>Sign in</ButtonComponent></Link> </Menu.Item>
+          {isAuthenticated
+        ? <Menu.Item key="user" > <p>{user}</p> </Menu.Item>
+        : <Menu.Item key="button"  > <Link href="/login"><ButtonComponent>Sign in</ButtonComponent></Link> </Menu.Item>
+      }
+   
         {/* <p style={{marginBottom:"0"}}>hi</p> */}
         </Col>
         </Menu>
@@ -80,5 +86,6 @@ const Navbar = () => (
   </Layout>
   </Row>
 );
+  }
 
 export default Navbar;
