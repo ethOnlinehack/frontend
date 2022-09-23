@@ -35,7 +35,6 @@ export default function Home() {
   return (
     <div>
     <div style={{height:"2000px"}} className={styles.container}>
-<CardImage image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" />
     <ButtonComponent>HIII</ButtonComponent>
    <FileUpload withCredentials={true} url={API.FILE_UPLOAD.URL} maxCount={1} onChange={handleChange}/>
         <ButtonComponent onClick={()=>console.log("hiiii")} loading={false}>zied </ButtonComponent>
