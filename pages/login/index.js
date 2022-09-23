@@ -8,6 +8,8 @@ import SimpleCard from "../../components/SimpleCard";
 import { login } from "../../services/userService";
 import Router from "next/router";
 import { useAuth } from "../../contexts/Auth";
+import Link from "next/link";
+import { Col, Divider, Row } from 'antd';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -28,6 +30,12 @@ export default function Login() {
         justifyContent: "center",
       }}
     >
+       <Row gutter={24}>
+        <Col span={24}       style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
       <SimpleCard title="Sign in to the app">
         <Formik
           initialValues={initialValues}
@@ -74,6 +82,22 @@ export default function Login() {
           )}
         </Formik>
       </SimpleCard>
+      </Col>
+      <Col span={24}       style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+      <div>
+      <SimpleCard style={{background:"#111927"}}>
+        <div>
+        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"15px"}}>New to the app? <Link href="/register"> Create an account.</Link></p>
+        
+        </div>
+      </SimpleCard>
+      </div>
+      </Col>
+      </Row>
     </div>
   );
 }
