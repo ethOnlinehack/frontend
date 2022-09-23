@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/pro-components": "^2.3.12",
     "antd": "^4.23.2",
     "axios": "^0.27.2",
     "formik": "^2.2.9",

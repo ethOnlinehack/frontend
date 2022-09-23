@@ -1,33 +1,58 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
-import React from 'react';
-import ButtonComponent from '../Button';
-import css from './navbar.module.scss';
+import { Breadcrumb, Layout, Menu } from "antd";
+import React from "react";
+import ButtonComponent from "../Button";
+import css from "./navbar.module.scss";
 const { Header, Content, Footer } = Layout;
+import { useAuth } from "../../contexts/Auth";
 
-const Navbar = () => (
-  <Layout className={css.navbar}>
-    <Header 
-      style={{
-        position: 'flex',
-        zIndex: 1,
-        width: '100%',
-      }}
-    >
-      <Menu style={{color:"white", display: "flex",
-    alignItems: "center",
-    justifyContent: "center"}}
-        mode="horizontal"
-        
+const Navbar = () => {
+  const { isAuthenticated, user } = useAuth();
+
+  return (
+    <Layout className={css.navbar}>
+      <Header
+        style={{
+          position: "flex",
+          zIndex: 1,
+          width: "100%",
+        }}
       >
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Team</Menu.Item>
-        <Menu.Item key="3">Services</Menu.Item>
-        <Menu.Item key="4" style={{position:"absolute", left:"50px", float:"left"}}>Lorem</Menu.Item>
-        <Menu.Item key="button" style={{position:"absolute", right:"50px", float:"right", marginTop:"16px"}}><ButtonComponent>Sign in</ButtonComponent></Menu.Item>
+        <Menu
+          style={{
+            color: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          mode="horizontal"
+        >
+          <Menu.Item key="1">Home</Menu.Item>
+          <Menu.Item key="2">Team</Menu.Item>
+          <Menu.Item key="3">Services</Menu.Item>
+          <Menu.Item
+            key="4"
+            style={{ position: "absolute", left: "50px", float: "left" }}
+          >
+            Lorem
+          </Menu.Item>
+          <Menu.Item
+            key="button"
+            style={{
+              position: "absolute",
+              right: "50px",
+              float: "right",
+              marginTop: "16px",
+            }}
+          >
+            {isAuthenticated ? (
+              user.first_name
+            ) : (
+              <ButtonComponent>Sign in</ButtonComponent>
+            )}
+          </Menu.Item>
         </Menu>
-
-    </Header>
-{/*     <Content
+      </Header>
+      {/*     <Content
       className="site-layout"
       style={{
         padding: '0 50px',
@@ -53,7 +78,8 @@ const Navbar = () => (
         Content
       </div>
     </Content> */}
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default Navbar;
