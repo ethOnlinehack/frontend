@@ -33,4 +33,10 @@ export const API = {
         URL: "/game/create",
       }
     },
+    NFT:{
+      CREATE:{
+        METHOD: METHOD.POST,
+        URL: "/nft/create",
+      }
+    }
 };
