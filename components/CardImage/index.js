@@ -1,11 +1,10 @@
 import { Card } from "antd";
 import React from "react";
 const { Meta } = Card;
-import { EditOutlined, DeleteOutlined, EllipsisOutlined, MenuOutlined   } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined   } from '@ant-design/icons';
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import css from "./cardImage.module.scss"
-const CardImage = () => (
+const CardImage = ({image})=> (
   <Card
     className={css.Card}
     hoverable
@@ -21,7 +20,7 @@ const CardImage = () => (
       
       <img
         alt="example"
-        src="./Cover.png"
+        src={image}
       />
       
     }
