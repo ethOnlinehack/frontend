@@ -117,7 +117,7 @@ export default function Register() {
       <div>
       <SimpleCard style={{background:"#111927"}}>
         <div>
-        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"14px"}}>Already have an account? <Link href="/login"> Sign in.</Link></p>
+        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"14px", marginBottom:"0"}}>Already have an account? <Link href="/login"> Sign in.</Link></p>
         
         </div>
       </SimpleCard>

@@ -1,5 +1,6 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
+import Link from "next/link";
 import ButtonComponent from '../Button';
 import css from './navbar.module.scss';
 import { Col, Row } from "antd";
@@ -43,7 +44,8 @@ const Navbar = () => (
             alignItems: "center",
             justifyContent: "center",
           }}>
-        <Menu.Item key="button"  ><ButtonComponent>Sign in</ButtonComponent></Menu.Item>
+            
+        <Menu.Item key="button"  > <Link href="/login"><ButtonComponent>Sign in</ButtonComponent></Link> </Menu.Item>
         {/* <p style={{marginBottom:"0"}}>hi</p> */}
         </Col>
         </Menu>

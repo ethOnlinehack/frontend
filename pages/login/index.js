@@ -91,7 +91,7 @@ export default function Login() {
       <div>
       <SimpleCard style={{background:"#111927"}}>
         <div>
-        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"15px"}}>New to the app? <Link href="/register"> Create an account.</Link></p>
+        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"15px", marginBottom:"0"}}>New to the app? <Link href="/register"> Create an account.</Link></p>
         
         </div>
       </SimpleCard>
