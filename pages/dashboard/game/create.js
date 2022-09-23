@@ -73,7 +73,7 @@ const CreateGameComponent = () => {
 
 const initialValues = {
   game_description:"",
-  game_name:null
+  game_name:""
 };
 
 export default CreateGameComponent;
