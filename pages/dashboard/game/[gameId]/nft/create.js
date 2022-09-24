@@ -4,11 +4,12 @@ import ButtonComponent from "../../../../../components/Button";
 import InputText from "../../../../../components/Form/InputText";
 import SimpleCard from "../../../../../components/SimpleCard";
 import FileUpload from "../../../../../components/Upload";
-import  {useRouter} from "next/router"
+import  Router, {useRouter} from "next/router"
 import * as Yup from "yup";
 import { API } from "../../../../../services/routes";
 import { createNft } from "../../../../../services/nftService";
 import TextAreaComponent from "../../../../../components/Form/TextArea";
+import { concatURl } from "../../../../../services/httpService";
 
 const CreateNft = () => {
   const [loading, setLoading] = useState(false);
@@ -65,16 +66,15 @@ const CreateNft = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validate}
-          onSubmit={(values) => {  
+          onSubmit={(values) => { 
             values.ipfs_uri = urls.ipfs_uri;
             values.ipfs_card_uri = urls.ipfs_card_uri
             values.game_id = gameId;
-            return  console.log(values)
-
             setLoading(true);
             createNft(values)
               .then((data) => {
                 console.log(data);
+                Router.push(concatURl("/dashboard/game/:gameId/nft/:nftId",{gameId:gameId,nftId:data._id}))
               })
               .finally(() => {
                 setLoading(false);

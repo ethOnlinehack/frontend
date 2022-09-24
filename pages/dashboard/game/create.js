@@ -7,7 +7,7 @@ import Router from "next/router";
 import * as Yup from "yup";
 import { createGame } from "../../../services/gameService";
 import TextAreaComponent from "../../../components/Form/TextArea";
-
+import { concatURl } from "../../../services/httpService"
 const CreateGameComponent = () => {
   const [loading, setLoading] = useState(false);
   const validate = Yup.object({
@@ -32,7 +32,7 @@ const CreateGameComponent = () => {
             createGame(values)
               .then((data) => {
                 console.log(data);
-              })
+                Router.push(concatURl("/dashboard/game/:gameId",{gameId:data._id}))              })
               .finally(() => {
                 setLoading(false);
               });
@@ -57,7 +57,7 @@ const CreateGameComponent = () => {
                 />
               </label>
               <ButtonComponent
-                style={{ width: "100%" }}
+                style={{ width: "100%",marginTop:"20px" }}
                 htmlType="submit"
                 loading={loading}
               >

@@ -1,13 +1,27 @@
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Breadcrumb, Layout, Menu, Dropdown, Space, Col, Row } from "antd";
 import React from "react";
 import Link from "next/link";
 import ButtonComponent from "../Button";
 import css from "./navbar.module.scss";
-import { Col, Row } from "antd";
 import { useAuth } from "../../contexts/Auth/index";
 import { HomeOutlined } from "@ant-design/icons";
 
 const { Header, Content, Footer } = Layout;
+
+const menu = (
+  <Menu
+    items={[
+      {
+        label: <Link href="/dashboard">dashboard</Link>,
+        key: "0",
+      },
+      {
+        label: <Link href="/logout">Logout</Link>,
+        key: "1",
+      },
+    ]}
+  />
+);
 
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth();
@@ -83,9 +97,16 @@ const Navbar = () => {
               }}
             >
               {isAuthenticated ? (
-                <Menu.Item key="user">
-                  {" "}
-                  <p>{user.email}</p>{" "}
+                <Menu.Item key="user" className="hover">
+                  <Dropdown overlay={menu} trigger={["click"]}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        <p style={{ display: "inline", color: "white" }}>
+                          {user.email}
+                        </p>
+                      </Space>
+                    </a>
+                  </Dropdown>
                 </Menu.Item>
               ) : (
                 <Menu.Item key="button">
@@ -99,7 +120,7 @@ const Navbar = () => {
                     >
                       Sign in
                     </ButtonComponent>
-                  </Link>{" "}
+                  </Link>
                 </Menu.Item>
               )}
 
