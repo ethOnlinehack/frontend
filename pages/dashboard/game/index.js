@@ -22,7 +22,7 @@ const Games = () => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h1 style={{ position: "absolute", zIndex: "2" }}>My Games</h1>
+        <h1 style={{ position: "absolute", zIndex: "2", color:"white", marginTop:"125px", display:"inline-block", fontSize:"36px" }}>My Games</h1>
       </div>
       <div>
         <Image
@@ -60,16 +60,18 @@ const Games = () => {
           </ButtonComponent>
         </Link>
       </div>
-      <Row gutter={24}>
+      <Row gutter={48} style={{                display: "flex",
+                justifyContent: "center",}}>
         {games.map((game) => (
           <div key={game._id}>
           <Link href={"/dashboard/game/"+game._id}>
             <Col
-              span={6}
+              span={24}
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                marginTop:"50px"
               }}
             >
               <CardImage image="/Cover.png" title={game.name}></CardImage>

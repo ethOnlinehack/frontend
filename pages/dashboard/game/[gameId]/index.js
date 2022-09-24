@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import CardImage from "../../../../components/CardImage/index";
-import { Col, Row } from "antd";
-import Image from "next/image";
+import { Col, Row, Image } from "antd";
 import ButtonComponent from "../../../../components/Button";
 import Link from "next/link";
 import { PlusOutlined } from "@ant-design/icons";
