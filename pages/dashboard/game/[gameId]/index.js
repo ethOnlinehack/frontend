@@ -1,11 +1,22 @@
-import React from 'react';
+import { Tabs } from "antd";
+import React from "react";
+import Collection from "./nft";
+import Api from "./api";
 
-const Game = () => {
-    return (
-        <div>
-            Game page
-        </div>
-    );
+const Tab = () => {
+  const items = [
+    {
+      label: "Collection",
+      key: 1,
+      children: <Collection />,
+    },
+    {
+      label: "API References",
+      key: 2,
+      children: <Api />,
+    },
+  ];
+  return <Tabs type="card" items={items} />;
 };
 
-export default Game;
+export default Tab;
