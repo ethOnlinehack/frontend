@@ -16,9 +16,9 @@ const CreateGameComponent = () => {
     game_name: Yup.string().required("game name is required!"),
     game_description: Yup.string(),
   });
-  const { user, isAuthenticated } = useAuth();
+  const {  isAuthenticated } = useAuth();
   useEffect(() => {
-    if (!isAuthenticated) Router.push("/login");
+    if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
   }, []);
   return (
     <div

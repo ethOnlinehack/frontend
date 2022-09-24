@@ -10,7 +10,7 @@ const Dashboard = () => {
 
     const { user, isAuthenticated } = useAuth();
     useEffect(() => {
-      if (!isAuthenticated) Router.push("/login");
+      if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
     }, []);
   return (
     <Row>

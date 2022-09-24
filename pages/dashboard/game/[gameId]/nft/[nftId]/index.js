@@ -14,13 +14,16 @@ const Nft = () => {
   const router = useRouter();
   const { nftId } = router.query;
   useEffect(() => {
-    if (!isAuthenticated) Router.push("/login");
-    console.log(nftId);
-    // getOneNft({ nftId: nftId }).then((data) => {
-    //   console.log(data);
-    // });
+    if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
+    if(router.isReady){
+      getOneNft({ nftId: nftId }).then((data) => {
+      });
+    }
+      
   }, [nft]);
   return (
+    <>
+    {router.isReady ? (
     <div>
       <Row gutter={24}>
         <Col
@@ -76,7 +79,8 @@ const Nft = () => {
           </Card>
         </Col>
       </Row>
-    </div>
+    </div> ): ("")}
+    </>
   );
 };
 

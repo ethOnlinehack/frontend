@@ -5,8 +5,8 @@ const createNft = (data) => {
   return httpClient(API.NFT.CREATE, null, data);
 };
 
-const getAllNfts = () => {
-  return httpClient(API.NFT.GET_ALL, null, null);
+const getAllNfts = (params) => {
+  return httpClient(API.NFT.GET_ALL, params, null);
 };
 
 const getOneNft = (params) => {

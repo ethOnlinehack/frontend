@@ -6,14 +6,18 @@ import ButtonComponent from "../../../components/Button";
 import Link from "next/link";
 import { PlusOutlined } from "@ant-design/icons";
 import { getAllGames } from "../../../services/gameService";
+import { useAuth } from "../../../contexts/Auth";
 
 const Games = () => {
   const [games, setGames] = useState([]);
+  const { isAuthenticated } = useAuth();
+
   useEffect(() => {
+    if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
     getAllGames().then((data) => {
       setGames(data);
     });
-  }, []);
+  }, [games]);
 
   return (
     <div>

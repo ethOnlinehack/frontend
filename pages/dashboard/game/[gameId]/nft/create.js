@@ -18,9 +18,9 @@ const CreateNft = () => {
 
   const router = useRouter()
   const { gameId } = router.query
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
-    if (!isAuthenticated) Router.push("/login");
+    if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
   }, []);
 
   const validate = Yup.object({
