@@ -8,6 +8,7 @@ import  {useRouter} from "next/router"
 import * as Yup from "yup";
 import { API } from "../../../../../services/routes";
 import { createNft } from "../../../../../services/nftService";
+import TextAreaComponent from "../../../../../components/Form/TextArea";
 
 const CreateNft = () => {
   const [loading, setLoading] = useState(false);
@@ -67,6 +68,8 @@ const CreateNft = () => {
             values.ipfs_uri = urls.ipfs_uri;
             values.ipfs_card_uri = urls.ipfs_card_uri
             values.game_id = gameId;
+            return  console.log(values)
+
             setLoading(true);
             createNft(values)
               .then((data) => {
@@ -85,11 +88,7 @@ const CreateNft = () => {
               </label>
               <label>
                 Nft description
-                <InputText
-                  type="text"
-                  name="nft_description"
-                  placeholder="Nft description"
-                />
+                <TextAreaComponent type="text" placeholder="Nft description"   name="nft_description"/>
               </label>
               Upload NFT
               <FileUpload

@@ -48,7 +48,7 @@ const Navbar = () => {
             justifyContent: "center",
           }}>
           {isAuthenticated
-        ? <Menu.Item key="user" > <p>{user}</p> </Menu.Item>
+        ? <Menu.Item key="user" > <p>{user.email}</p> </Menu.Item>
         : <Menu.Item key="button"  > <Link href="/login"><ButtonComponent>Sign in</ButtonComponent></Link> </Menu.Item>
       }
    
