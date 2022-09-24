@@ -5,4 +5,12 @@ const createGame = (data) => {
   return httpClient(API.GAME.CREATE, null, data);
 };
 
-export { createGame };
+const getAllGames = (params) => {
+  return httpClient(API.GAME.GET_ALL, params, null);
+};
+
+const getOneGame = (params) => {
+  return httpClient(API.GAME.GET_ONE, params, null);
+};
+
+export { createGame, getAllGames, getOneGame };

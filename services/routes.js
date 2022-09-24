@@ -27,16 +27,32 @@ export const API = {
     METHOD: METHOD.POST,
     URL: "/file/upload",
   },
-  GAME:{
-      CREATE:{
-        METHOD: METHOD.POST,
-        URL: "/game/create",
-      }
+  GAME: {
+    CREATE: {
+      METHOD: METHOD.POST,
+      URL: "/game/create",
     },
-    NFT:{
-      CREATE:{
-        METHOD: METHOD.POST,
-        URL: "/nft/create",
-      }
-    }
+    GET_ALL: {
+      METHOD: METHOD.GET,
+      URL: "/game/get-all",
+    },
+    GET_ONE: {
+      METHOD: METHOD.GET,
+      URL: "/game/get-one/:gameId",
+    },
+  },
+  NFT: {
+    CREATE: {
+      METHOD: METHOD.POST,
+      URL: "/nft/create",
+    },
+    GET_ONE: {
+      METHOD: METHOD.GET,
+      URL: "/nft/get-one/:nftId",
+    },
+    GET_ALL: {
+      METHOD: METHOD.GET,
+      URL: "/nft/get-all/:gameId",
+    },
+  },
 };
