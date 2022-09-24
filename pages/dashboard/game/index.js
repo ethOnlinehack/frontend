@@ -1,27 +1,30 @@
 import React from "react";
 import { useState } from "react";
 import CardImage from "../../../components/CardImage/index";
-import { Col, Row } from "antd";
-import Image from "next/image";
+import { Col, Row, Image } from "antd";
 import ButtonComponent from "../../../components/Button";
 import Link from "next/link";
-import {PlusOutlined} from '@ant-design/icons';
+import { PlusOutlined } from "@ant-design/icons";
 
 const Games = () => {
   const [games, setGames] = useState();
+
+  
   return (
-    <div>
+    <div >
       <div style={{ textAlign: "center" }}>
         <h1 style={{ position: "absolute", zIndex: "2" }}>My Games</h1>
       </div>
-      <Image
-        src="/testCover.jpg"
-        style={{ opacity: "0.3", zIndex: "1" }}
-        alt="example"
-        layout="responsive"
-        width="100%"
-        height="15px"
-      />
+      <div>
+        <Image
+          src="/testCover.jpg"
+          style={{ opacity: "0.3", zIndex: "1", objectFit: "cover" }}
+          alt="example"
+          width="100%"
+          height="300px"
+          preview={false}
+        />
+      </div>
       <div
         style={{
           display: "flex",
@@ -40,10 +43,12 @@ const Games = () => {
               borderRadius: "8px",
               height: "49px",
               fontSize: "20px",
-              justifyContent:"space-evenly"
+              justifyContent: "space-evenly",
             }}
+
           >
-            <PlusOutlined />Add Game
+            <PlusOutlined />
+            Add Game
           </ButtonComponent>
         </Link>
       </div>
