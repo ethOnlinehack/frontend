@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CardImage from "../../../components/CardImage/index";
 import { Col, Row, Image } from "antd";
 import ButtonComponent from "../../../components/Button";
 import Link from "next/link";
 import { PlusOutlined } from "@ant-design/icons";
+import { getAllGames } from "../../../services/gameService";
 
 const Games = () => {
-  const [games, setGames] = useState();
+  const [games, setGames] = useState([]);
+  useEffect(() => {
+    getAllGames().then((data) => {
+      setGames(data);
+    });
+  }, []);
 
-  
   return (
-    <div >
+    <div>
       <div style={{ textAlign: "center" }}>
         <h1 style={{ position: "absolute", zIndex: "2" }}>My Games</h1>
       </div>
@@ -45,16 +50,15 @@ const Games = () => {
               fontSize: "20px",
               justifyContent: "space-evenly",
             }}
-
           >
             <PlusOutlined />
             Add Game
           </ButtonComponent>
         </Link>
       </div>
-      {/* <Row gutter={24}>
+      <Row gutter={24}>
         {games.map((game) => (
-          <div key={game.id}>
+          <div key={game._id}>
             <Col
               span={6}
               style={{
@@ -63,11 +67,11 @@ const Games = () => {
                 justifyContent: "center",
               }}
             >
-              <CardImage image={game.image} title={game.title}></CardImage>
+              <CardImage image="/Cover.png" title={game.name}></CardImage>
             </Col>
           </div>
         ))}
-      </Row> */}
+      </Row>
     </div>
   );
 };
