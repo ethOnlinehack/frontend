@@ -40,4 +40,7 @@ const httpClient = async (API, params = null, data = null) => {
     });
   }
 };
-export { METHOD, httpClient };
+
+const concatURl = ( url, params) =>urlcat(url, params);
+
+export { METHOD, httpClient, concatURl };
