@@ -5,6 +5,7 @@ import ButtonComponent from '../Button';
 import css from './navbar.module.scss';
 import { Col, Row } from "antd";
 import { useAuth } from "../../contexts/Auth/index";
+import { HomeOutlined } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
 
@@ -31,7 +32,7 @@ const Navbar = () => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-        <Menu.Item className="hover" key="4" style={{color:"white"}} >Lorem</Menu.Item>
+        <Menu.Item className="hover" key="4" style={{color:"white"}} ><Link href="/" style={{color:"white"}}><HomeOutlined style={{height:"30px"}}/></Link></Menu.Item>
         </Col>
         <Col span={18} style={{
             display: "flex",
