@@ -7,7 +7,7 @@ const METHOD = { GET: "get", POST: "post", PUT: "put", DELETE: "delete" };
 // create client instance
 const axiosClient = axios.create({
   baseURL: baseURL,
-  timeout: 5000,
+  timeout: 15000,
   withCredentials: true,
   headers: { "X-Custom-Header": "foobar" },
 });

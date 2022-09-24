@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import CardImage from "../../../../../../components/CardImage/index";
-import { Col, Card, Row, Image, Typography,Divider } from "antd";
+import { Col, Card, Row, Image, Typography, Divider } from "antd";
 import SimpleCard from "../../../../../../components/SimpleCard";
 import { useAuth } from "../../../../../../contexts/Auth";
-import Router  from "next/router";
+import Router, { useRouter } from "next/router";
+import { getOneNft } from "../../../../../../services/nftService";
 const { Title } = Typography;
 
 const Nft = () => {
   const [visible, setVisible] = useState(false);
+  const [nft, setNft] = useState({});
   const { user, isAuthenticated } = useAuth();
+  const router = useRouter();
+  const { nftId } = router.query;
   useEffect(() => {
     if (!isAuthenticated) Router.push("/login");
-  }, []);
+    console.log(nftId);
+    // getOneNft({ nftId: nftId }).then((data) => {
+    //   console.log(data);
+    // });
+  }, [nft]);
   return (
     <div>
       <Row gutter={24}>
@@ -24,21 +32,19 @@ const Nft = () => {
             justifyContent: "center",
           }}
         >
-          <div style={{marginTop:"100px"}}>
-          <Image
-            preview={{ visible: false }}
-          
-            src="/Cover.png"
-            alt="example"
-            onClick={() => setVisible(true)}
-            
-          />
+          <div style={{ marginTop: "100px" }}>
+            <Image
+              preview={{ visible: false }}
+              src={nft.ipfs_card_uri}
+              alt="example"
+              onClick={() => setVisible(true)}
+            />
           </div>
           <div style={{ display: "none" }}>
             <Image.PreviewGroup
               preview={{ visible, onVisibleChange: (vis) => setVisible(vis) }}
             >
-              <Image src="/Cover.png" alt="example" />
+              <Image src={nft.ipfs_card_uri} alt="example" />
             </Image.PreviewGroup>
           </div>
         </Col>
@@ -51,15 +57,21 @@ const Nft = () => {
               border: "0.5px solid #2c613b",
               color: "white",
               borderRadius: "10px",
-              marginTop:"100px"
-
+              marginTop: "100px",
             }}
           >
-            <div style={{ color: "white" }} >
-              <Title level={3} style={{ color: "white" }}> Nft name:</Title> <p>NFTouta</p>
-              <Divider style={{background:"#2c613b"}}/>
-              <Title level={3} style={{ color: "white" }}> Nft Description:</Title>
-
+            <div style={{ color: "white" }}>
+              <Title level={3} style={{ color: "white" }}>
+                {" "}
+                Nft name:
+              </Title>{" "}
+              {nft.name}
+              <Divider style={{ background: "#2c613b" }} />
+              <Title level={3} style={{ color: "white" }}>
+                {" "}
+                Nft Description:
+              </Title>{" "}
+              {nft.description}
             </div>
           </Card>
         </Col>
