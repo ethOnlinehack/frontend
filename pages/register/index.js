@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./form.module.scss";
@@ -9,6 +9,7 @@ import { register } from "../../services/userService";
 import Router  from "next/router";
 import Link from "next/link";
 import { Col, Divider, Row } from 'antd';
+import { useAuth } from "../../contexts/Auth";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,11 @@ export default function Register() {
       .oneOf([Yup.ref("password"), null], "Password must match!")
       .required("Confirm password is required!"),
   });
+  const { isAuthenticated } = useAuth();
 
+  useEffect(() => {
+    if (isAuthenticated) Router.push("/dashboard");
+  }, [isAuthenticated]);
   return (
 
     <div

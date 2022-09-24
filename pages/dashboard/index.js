@@ -1,10 +1,17 @@
 import { Row, Col, Card, Divider, Typography } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuth } from "../../contexts/Auth";
+import Router  from "next/router";
 
 const { Title } = Typography;
 
 const Dashboard = () => {
+
+    const { user, isAuthenticated } = useAuth();
+    useEffect(() => {
+      if (!isAuthenticated) Router.push("/login");
+    }, []);
   return (
     <Row>
       <Col sm={24} md={12}>

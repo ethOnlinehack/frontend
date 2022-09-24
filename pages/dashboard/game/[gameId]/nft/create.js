@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import ButtonComponent from "../../../../../components/Button";
 import InputText from "../../../../../components/Form/InputText";
@@ -10,6 +10,7 @@ import { API } from "../../../../../services/routes";
 import { createNft } from "../../../../../services/nftService";
 import TextAreaComponent from "../../../../../components/Form/TextArea";
 import { concatURl } from "../../../../../services/httpService";
+import { useAuth } from "../../../../../contexts/Auth";
 
 const CreateNft = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,10 @@ const CreateNft = () => {
 
   const router = useRouter()
   const { gameId } = router.query
-
+  const { user, isAuthenticated } = useAuth();
+  useEffect(() => {
+    if (!isAuthenticated) Router.push("/login");
+  }, []);
 
   const validate = Yup.object({
     nft_name: Yup.string().required("game name is required!"),

@@ -18,7 +18,6 @@ import Navbar from "../components/Navbar/index"
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
-  useEffect(() => {}, []);
   const handleChange =(info)=>{
    
       if (info.file.status !== 'uploading') {

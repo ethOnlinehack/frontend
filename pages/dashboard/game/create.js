@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import ButtonComponent from "../../../components/Button";
 import InputText from "../../../components/Form/InputText";
@@ -7,13 +7,19 @@ import Router from "next/router";
 import * as Yup from "yup";
 import { createGame } from "../../../services/gameService";
 import TextAreaComponent from "../../../components/Form/TextArea";
-import { concatURl } from "../../../services/httpService"
+import { concatURl } from "../../../services/httpService";
+import { useAuth } from "../../../contexts/Auth";
+
 const CreateGameComponent = () => {
   const [loading, setLoading] = useState(false);
   const validate = Yup.object({
     game_name: Yup.string().required("game name is required!"),
     game_description: Yup.string(),
   });
+  const { user, isAuthenticated } = useAuth();
+  useEffect(() => {
+    if (!isAuthenticated) Router.push("/login");
+  }, []);
   return (
     <div
       style={{
@@ -31,7 +37,10 @@ const CreateGameComponent = () => {
             createGame(values)
               .then((data) => {
                 console.log(data);
-                Router.push(concatURl("/dashboard/game/:gameId",{gameId:data._id}))              })
+                Router.push(
+                  concatURl("/dashboard/game/:gameId", { gameId: data._id })
+                );
+              })
               .finally(() => {
                 setLoading(false);
               });
@@ -56,7 +65,7 @@ const CreateGameComponent = () => {
                 />
               </label>
               <ButtonComponent
-                style={{ width: "100%",marginTop:"20px" }}
+                style={{ width: "100%", marginTop: "20px" }}
                 htmlType="submit"
                 loading={loading}
               >

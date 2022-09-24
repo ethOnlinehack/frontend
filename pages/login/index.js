@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./login.module.scss";
@@ -13,8 +13,10 @@ import { Col, Divider, Row } from 'antd';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
-  const { user, setUser, setIsAuthenticated } = useAuth();
-
+  const { isAuthenticated, setUser, setIsAuthenticated } = useAuth();
+  useEffect(() => {
+    if (isAuthenticated) Router.push("/dashboard");
+  }, [isAuthenticated]);
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid!").required("Email Required!"),
     password: Yup.string()

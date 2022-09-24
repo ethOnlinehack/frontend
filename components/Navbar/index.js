@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, Menu, Dropdown, Space, Col, Row } from "antd";
+import { Breadcrumb, Layout, Menu, Dropdown, Space, Col, Row, Button } from "antd";
 import React from "react";
 import Link from "next/link";
 import ButtonComponent from "../Button";
@@ -8,23 +8,28 @@ import { HomeOutlined } from "@ant-design/icons";
 
 const { Header, Content, Footer } = Layout;
 
-const menu = (
-  <Menu
-    items={[
-      {
-        label: <Link href="/dashboard">dashboard</Link>,
-        key: "0",
-      },
-      {
-        label: <Link href="/logout">Logout</Link>,
-        key: "1",
-      },
-    ]}
-  />
-);
 
 const Navbar = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, setUser, setIsAuthenticated } = useAuth();
+  const menu = (
+    <Menu
+      items={[
+        {
+          label: <Link href="/dashboard">dashboard</Link>,
+          key: "0",
+        },
+        {
+          label: <Button onClick={()=> {
+            document.cookie = "";
+            setUser(null)
+            setIsAuthenticated(false)
+          }} type="ghost" >Logout</Button>,
+          key: "1",
+        },
+      ]}
+    />
+  );
+  
   return (
     <Row gutter={24}>
       <Layout className={css.navbar}>

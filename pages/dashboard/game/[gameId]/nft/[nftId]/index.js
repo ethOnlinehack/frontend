@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardImage from "../../../../../../components/CardImage/index";
 import { Col, Card, Row, Image, Typography,Divider } from "antd";
 import SimpleCard from "../../../../../../components/SimpleCard";
+import { useAuth } from "../../../../../../contexts/Auth";
+import Router  from "next/router";
 const { Title } = Typography;
 
 const Nft = () => {
   const [visible, setVisible] = useState(false);
-
+  const { user, isAuthenticated } = useAuth();
+  useEffect(() => {
+    if (!isAuthenticated) Router.push("/login");
+  }, []);
   return (
     <div>
       <Row gutter={24}>
