@@ -20,6 +20,7 @@ const CreateGameComponent = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:"100px"
       }}
     >
       <SimpleCard title="Create new game">
