@@ -59,6 +59,7 @@ const Games = () => {
       <Row gutter={24}>
         {games.map((game) => (
           <div key={game._id}>
+          <Link href={"/dashboard/game/"+game._id}>
             <Col
               span={6}
               style={{
@@ -69,6 +70,7 @@ const Games = () => {
             >
               <CardImage image="/Cover.png" title={game.name}></CardImage>
             </Col>
+            </Link>
           </div>
         ))}
       </Row>

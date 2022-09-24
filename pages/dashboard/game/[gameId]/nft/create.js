@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import ButtonComponent from "../../../../components/Button";
-import InputText from "../../../../components/Form/InputText";
-import SimpleCard from "../../../../components/SimpleCard";
-import FileUpload from "../../../../components/Upload";
+import ButtonComponent from "../../../../../components/Button";
+import InputText from "../../../../../components/Form/InputText";
+import SimpleCard from "../../../../../components/SimpleCard";
+import FileUpload from "../../../../../components/Upload";
 import  {useRouter} from "next/router"
 import * as Yup from "yup";
-import { API } from "../../../../services/routes";
-import { createNft } from "../../../../services/nftService";
-import TextAreaComponent from "../../../../components/Form/TextArea";
+import { API } from "../../../../../services/routes";
+import { createNft } from "../../../../../services/nftService";
+import TextAreaComponent from "../../../../../components/Form/TextArea";
 
 const CreateNft = () => {
   const [loading, setLoading] = useState(false);
