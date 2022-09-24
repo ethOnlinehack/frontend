@@ -19,7 +19,7 @@ const CardImage = ({image, title})=> (
     ]}
     cover={
       
-      <img src={image} alt="example"  width="100px" height="100px"/>
+      <img src={image} alt="example"  width="100px" height="300px"/>
       
     }
   >
