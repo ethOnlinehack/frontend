@@ -37,6 +37,12 @@
        color:#68d788;
      }
   }
+  :global(.ant-menu-title-content){
+    color:"white";
+    &:hover{
+      color:#68d788;
+    }
+  }
 
 }
 

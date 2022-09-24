@@ -46,7 +46,7 @@ export default function Login() {
               .then((data) => {
                 setUser(data);
                 setIsAuthenticated(true);
-                Router.push("/");
+                Router.push("/dashboard");
               })
               .catch((e) => {
                 console.log(e);
