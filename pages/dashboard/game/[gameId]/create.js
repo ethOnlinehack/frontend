@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import ButtonComponent from "../../../../../components/Button";
-import InputText from "../../../../../components/Form/InputText";
-import SimpleCard from "../../../../../components/SimpleCard";
-import FileUpload from "../../../../../components/Upload";
+import ButtonComponent from "../../../../components/Button";
+import InputText from "../../../../components/Form/InputText";
+import SimpleCard from "../../../../components/SimpleCard";
+import FileUpload from "../../../../components/Upload";
 import  {useRouter} from "next/router"
 import * as Yup from "yup";
-import { API } from "../../../../../services/routes";
-import { createNft } from "../../../../../services/nftService";
-import TextAreaComponent from "../../../../../components/Form/TextArea";
+import { API } from "../../../../services/routes";
+import { createNft } from "../../../../services/nftService";
+import TextAreaComponent from "../../../../components/Form/TextArea";
 
 const CreateNft = () => {
   const [loading, setLoading] = useState(false);
@@ -58,6 +58,7 @@ const CreateNft = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:"100px"
       }}
     >
       <SimpleCard title="Create new Nft">
@@ -80,7 +81,9 @@ const CreateNft = () => {
               });
           }}
         >
-          <div>
+          <div style={{        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",     width:"100%", marginLeft:"100%", marginRight:"100%"}}>
             <Form className="form p-3">
               <label style={{ marginTop: "100px" }}>
                 Nft name
@@ -90,6 +93,7 @@ const CreateNft = () => {
                 Nft description
                 <TextAreaComponent type="text" placeholder="Nft description"   name="nft_description"/>
               </label>
+              <div style={{marginTop:"20px" }}>
               Upload NFT
               <FileUpload
                 withCredentials={true}
@@ -97,6 +101,8 @@ const CreateNft = () => {
                 maxCount={1}
                 onChange={handleChangeNft}
               />
+              </div>
+              <div style={{marginTop:"20px"}}>
               Upload NFT Card
               <FileUpload
                 withCredentials={true}
@@ -104,8 +110,9 @@ const CreateNft = () => {
                 maxCount={1}
                 onChange={handleChangeNftCard}
               />
+              </div>
               <ButtonComponent
-                style={{ width: "100%" }}
+                style={{ width: "100%", marginTop:"20px" }}
                 htmlType="submit"
                 loading={loading}
               >

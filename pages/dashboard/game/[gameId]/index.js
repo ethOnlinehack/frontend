@@ -7,6 +7,7 @@ import ButtonComponent from "../../../../components/Button";
 import Link from "next/link";
 import {PlusOutlined} from '@ant-design/icons';
 
+
 const Game = () => {
   const [nfts, setNfts] = useState();
   return (
@@ -37,7 +38,7 @@ const Game = () => {
           marginTop: "60px",
         }}
       >
-        <Link href="./game/create">
+        <Link href="./nft/create">
           <ButtonComponent
             style={{
               width: "200px",
