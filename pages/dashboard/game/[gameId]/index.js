@@ -6,10 +6,13 @@ import Image from "next/image";
 import ButtonComponent from "../../../../components/Button";
 import Link from "next/link";
 import {PlusOutlined} from '@ant-design/icons';
+import { concatURl } from "../../../../services/httpService";
 
 
 const Game = () => {
   const [nfts, setNfts] = useState();
+  const { gameId } = router.query
+
   return (
     <div>
       <div style={{ textAlign: "center" }}>
@@ -38,7 +41,7 @@ const Game = () => {
           marginTop: "60px",
         }}
       >
-        <Link href="./nft/create">
+        <Link href={concatURl("/dashboard/game/:gameId/nft/create",{gameId:})}>
           <ButtonComponent
             style={{
               width: "200px",
