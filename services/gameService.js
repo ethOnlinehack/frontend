@@ -5,8 +5,8 @@ const createGame = (data) => {
   return httpClient(API.GAME.CREATE, null, data);
 };
 
-const getAllGames = (params) => {
-  return httpClient(API.GAME.GET_ALL, params, null);
+const getAllGames = () => {
+  return httpClient(API.GAME.GET_ALL,null, null);
 };
 
 const getOneGame = (params) => {
