@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import CardImage from "../../../../components/CardImage/index";
-import { Col, Row } from "antd";
-import Image from "next/image";
+import { Col, Row, Image } from "antd";
 import ButtonComponent from "../../../../components/Button";
 import Link from "next/link";
 import { PlusOutlined } from "@ant-design/icons";
@@ -23,17 +22,17 @@ const Game = () => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h1 style={{ position: "absolute", zIndex: "2", color: "white" }}>
+        <h1 style={{ position: "absolute", zIndex: "2", color:"white", marginTop:"125px", display:"inline-block", fontSize:"36px" }}>
           NFTs Collection
         </h1>
       </div>
       <Image
-        src="/testCover.jpg"
-        style={{ opacity: "0.3", zIndex: "1" }}
-        alt="example"
-        layout="responsive"
-        width="100%"
-        height="15px"
+          src="/testCover.jpg"
+          style={{ opacity: "0.3", zIndex: "1", objectFit: "cover" }}
+          alt="example"
+          width="100%"
+          height="300px"
+          preview={false}
       />
       <Row gutter={24}>
         <Col span={4}>
