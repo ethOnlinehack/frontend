@@ -36,6 +36,7 @@ export default function Register() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:"100px",
       }}
     >
       <Row gutter={24}>

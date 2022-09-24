@@ -30,6 +30,7 @@ export default function Login() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:"100px",
       }}
     >
        <Row gutter={24}>
@@ -38,7 +39,7 @@ export default function Login() {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <SimpleCard title="Sign in to the app">
+      <SimpleCard title="Sign in to the app" >
         <Formik
           initialValues={initialValues}
           validationSchema={validate}

@@ -24,13 +24,16 @@ const Nft = () => {
             justifyContent: "center",
           }}
         >
+          <div style={{marginTop:"100px"}}>
           <Image
             preview={{ visible: false }}
           
             src="/Cover.png"
             alt="example"
             onClick={() => setVisible(true)}
+            
           />
+          </div>
           <div style={{ display: "none" }}>
             <Image.PreviewGroup
               preview={{ visible, onVisibleChange: (vis) => setVisible(vis) }}
@@ -47,12 +50,13 @@ const Nft = () => {
               background: "#232B39",
               border: "0.5px solid #2c613b",
               color: "white",
-              borderRadius: "10px"
+              borderRadius: "10px",
+              marginTop:"100px"
 
             }}
           >
             <div style={{ color: "white" }} >
-              <Title level={3} style={{ color: "white" }}> Nft name:</Title> <p>test</p>
+              <Title level={3} style={{ color: "white" }}> Nft name:</Title> <p>NFTouta</p>
               <Divider style={{background:"#2c613b"}}/>
               <Title level={3} style={{ color: "white" }}> Nft Description:</Title>
 
