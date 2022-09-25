@@ -17,10 +17,11 @@ const Nft = () => {
     if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
     if(router.isReady){
       getOneNft({ nftId: nftId }).then((data) => {
+        setNft(data)
       });
     }
       
-  }, [nft]);
+  }, [router.isReady]);
   return (
     <>
     {router.isReady ? (

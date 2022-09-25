@@ -91,7 +91,8 @@ const Game = () => {
 
           <Row gutter={24}>
             {nfts.map((nft) => (
-              <div key={nft._id}>
+              <Link key={nft._id} href={concatURl("/dashboard/game/:gameId/nft/:nftId",{gameId,nftId: nft._id})}> 
+              <div >
                 <Col
                   span={6}
                   style={{
@@ -103,6 +104,7 @@ const Game = () => {
                   <CardImage image={nft.ipfs_card_uri} title={nft.name}></CardImage>
                 </Col>
               </div>
+              </Link>
             ))}
           </Row>
         </div>
