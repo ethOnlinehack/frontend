@@ -2,33 +2,21 @@ import { Tabs } from "antd";
 import React from "react";
 import Collection from "./nft";
 import Api from "./api";
-import React from "react";
 import { useState } from "react";
-import CardImage from "../../../../components/CardImage/index";
-import { Col, Row, Image } from "antd";
-import ButtonComponent from "../../../../components/Button";
-import Link from "next/link";
-import { PlusOutlined } from "@ant-design/icons";
-import { concatURl } from "../../../../services/httpService";
+import {Image } from "antd";
 import { useEffect } from "react";
 import { useAuth } from "../../../../contexts/Auth";
 import Router, { useRouter } from "next/router";
-import { getAllNfts } from "../../../../services/nftService";
+
+
 
 
 const Game = () => {
-  const [nfts, setNfts] = useState([]);
   const router = useRouter();
   const { gameId } = router.query;
   const { isAuthenticated } = useAuth();
   useEffect(() => {
     if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
-    if (router.isReady) {
-      getAllNfts({ gameId: gameId }).then((data) => {
-        setNfts(data);
-        console.log(data)
-      });
-    }
   }, [gameId, router.isReady, isAuthenticated]);
 
   const items = [
@@ -60,7 +48,7 @@ const Game = () => {
          height="300px"
          preview={false}
       />
-      <Tabs type="card" items={items} />;
+      <Tabs type="card" items={items} style={{marginTop:"50px"}} />
       </div>) : (
         " ")}
       

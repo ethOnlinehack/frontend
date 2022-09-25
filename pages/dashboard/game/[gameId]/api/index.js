@@ -191,7 +191,7 @@ type: "Json",
 }]
 
 const genExtra = () => (
-  <div style={{gutter:"24"}}>
+  <div>
   <span style={{color: 'green'}}> POST </span>
   <span style={{fontWeight:'bold'}}>     /api/v1/gamer-sign-in </span>
   <span>     login or register the gamer </span>

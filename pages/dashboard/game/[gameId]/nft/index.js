@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import ButtonComponent from '../../../../../components/Button';
 import { PlusOutlined } from '@ant-design/icons';
-import CardImage from "../../../../components/CardImage/index";
+import CardImage from "../../../../../components/CardImage/index";
 import { Col, Row} from "antd";
 import Link from "next/link";
-import { concatURl } from "../../../../services/httpService";
-
+import { concatURl } from "../../../../../services/httpService";
+import Router, { useRouter } from "next/router";
+import { useAuth } from "../../../../../contexts/Auth";
+import { useState, useEffect } from "react";
+import {getAllNfts} from "../../../../../services/nftService"
 
 
 const Collection = () => {
-    const [loading, setLoading] = useState(false);
+  const router=useRouter();
+  const [nfts, setNfts] = useState([]);
+  const { gameId } = router.query;
+  const { isAuthenticated } = useAuth();
+    useEffect(() => {
+      if (!isAuthenticated && isAuthenticated != null) Router.push("/login");
+      if (router.isReady) {
+        getAllNfts({ gameId: gameId }).then((data) => {
+          setNfts(data);
+          console.log(data)
+        });
+      }
+    }, [gameId, router.isReady, isAuthenticated]);
           return (
             <div>
               {router.isReady ? (
