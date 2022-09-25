@@ -5,7 +5,7 @@ import { EditOutlined, DeleteOutlined   } from '@ant-design/icons';
 import { Menu } from 'antd';
 import css from "./cardImage.module.scss";
 import Image from 'next/image';
-const CardImage = ({image})=> (
+const CardImage = ({image, title})=> (
   <Card
     className={css.Card}
     hoverable
@@ -19,12 +19,12 @@ const CardImage = ({image})=> (
     ]}
     cover={
       
-      <Image src={image} alt="example" layout="responsive" width="100px" height="100px"/>
+      <img src={image} alt="example"  width="100px" height="300px"/>
       
     }
   >
  
-    <Meta style={{height:"20px", color:"white", fontSize:"50px",textAlign:"center"}}  title="RobinMania" />
+    <Meta style={{height:"20px", color:"white", fontSize:"50px",textAlign:"center"}}  title={title} />
 
   </Card>
 );

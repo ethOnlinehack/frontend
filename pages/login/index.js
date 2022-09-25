@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./login.module.scss";
@@ -13,8 +13,10 @@ import { Col, Divider, Row } from 'antd';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
-  const { user, setUser, setIsAuthenticated } = useAuth();
-
+  const { isAuthenticated, setUser, setIsAuthenticated } = useAuth();
+  useEffect(() => {
+    if (isAuthenticated) Router.push("/dashboard");
+  }, [isAuthenticated]);
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid!").required("Email Required!"),
     password: Yup.string()
@@ -28,6 +30,7 @@ export default function Login() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop:"100px",
       }}
     >
        <Row gutter={24}>
@@ -36,7 +39,7 @@ export default function Login() {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <SimpleCard title="Sign in to the app">
+      <SimpleCard title="Sign in to the app" >
         <Formik
           initialValues={initialValues}
           validationSchema={validate}
@@ -46,7 +49,7 @@ export default function Login() {
               .then((data) => {
                 setUser(data);
                 setIsAuthenticated(true);
-                Router.push("/");
+                Router.push("/dashboard");
               })
               .catch((e) => {
                 console.log(e);
@@ -91,7 +94,7 @@ export default function Login() {
       <div>
       <SimpleCard style={{background:"#111927"}}>
         <div>
-        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"15px"}}>New to the app? <Link href="/register"> Create an account.</Link></p>
+        <p style={{fontStyle:"bold",textAlign:'center', fontSize:"15px", marginBottom:"0"}}>New to the app? <Link href="/register"> Create an account.</Link></p>
         
         </div>
       </SimpleCard>

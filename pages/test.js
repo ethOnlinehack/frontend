@@ -6,7 +6,7 @@ import Router from "next/router";
 const Test = () => {
   const { user, isAuthenticated } = useAuth();
   useEffect(() => {
-    if (!isAuthenticated) Router.push("/");
+    if (!isAuthenticated) Router.push("/login");
   }, []);
   return (
     <div>

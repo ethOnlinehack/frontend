@@ -11,7 +11,7 @@
 
 .navbar{
   width:100%;
-  margin-bottom: 100px;
+  //margin-bottom: 100px;
 
   :global(.ant-menu){
     background: #111927;
@@ -36,6 +36,12 @@
      &:hover{
        color:#68d788;
      }
+  }
+  :global(.ant-menu-title-content){
+    color:"white";
+    &:hover{
+      color:#68d788;
+    }
   }
 
 }
