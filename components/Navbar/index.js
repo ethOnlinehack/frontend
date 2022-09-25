@@ -57,9 +57,9 @@ const Navbar = () => {
                 justifyContent: "center",
               }}
             >
-              <Menu.Item className="hover" key="4" style={{ color: "white" }}>
+              <Menu.Item key="4" style={{ color: "white" }}>
                 <Link href="/" style={{ color: "white" }}>
-                  <HomeOutlined style={{ height: "30px" }} />
+                  <p style={{color:"white", margin:"0"}}>BridgIt</p>
                 </Link>
               </Menu.Item>
             </Col>
