@@ -21,6 +21,7 @@ const Game = () => {
     if (router.isReady) {
       getAllNfts({ gameId: gameId }).then((data) => {
         setNfts(data);
+        console.log(data)
       });
     }
   }, [gameId, router.isReady, isAuthenticated]);
@@ -30,29 +31,20 @@ const Game = () => {
       {router.isReady ? (
         <div>
           <div style={{ textAlign: "center" }}>
-            <h1 style={{ position: "absolute", zIndex: "2", color: "white" }}>
-              NFTs Collection
+            <h1 style={{position: "absolute", zIndex: "2", color:"white", marginTop:"125px", display:"inline-block", fontSize:"36px"  }}>
+              Game Name
             </h1>
           </div>
           <Image
-            src="/testCover.jpg"
-            style={{ opacity: "0.3", zIndex: "1" }}
-            alt="example"
-            layout="responsive"
-            width="100%"
-            height="15px"
+             src="/testCover.jpg"
+             style={{ opacity: "0.3", zIndex: "1", objectFit: "cover" }}
+             alt="example"
+             width="100%"
+             height="300px"
+             preview={false}
           />
           <Row gutter={24}>
             <Col span={4}>
-              <h1
-                style={{
-                  marginTop: "60px",
-                  marginLeft: "60px",
-                  color: "white",
-                }}
-              >
-                Game Name:
-              </h1>
             </Col>
             <Col span={16}></Col>
             <Col span={4}>
@@ -89,16 +81,20 @@ const Game = () => {
             </Col>
           </Row>
 
-          <Row gutter={24}>
+          <Row gutter={48} style={{                display: "flex",
+                justifyContent: "center",}}>
             {nfts.map((nft) => (
               <Link key={nft._id} href={concatURl("/dashboard/game/:gameId/nft/:nftId",{gameId,nftId: nft._id})}> 
               <div >
                 <Col
-                  span={6}
+                  span={24}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginTop:"50px"
+                    
                   }}
                 >
                   <CardImage image={nft.ipfs_card_uri} title={nft.name}></CardImage>
