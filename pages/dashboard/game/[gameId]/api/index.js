@@ -1,8 +1,96 @@
-import React from 'react';
+import { Collapse } from 'antd';
 import { Space, Table, Tag } from 'antd';
+import React from 'react';
+const { Panel } = Collapse;
+
+const ApiReference = {
+  post: [
+    {
+      url: "/api/v1/gamer-sign-in",
+      description: "login or register the gamer",
+      input: [
+        {
+          name: "wallet_address",
+          type: "string",
+          description: "Gamer's wallet address",
+        },
+      ],
+      response: {
+        200: {
+          message: `
+          {
+              wallet_address: string ,
+              game_id: string,
+              quantity: {"nftID": int},
+              nfts: ["nftObject"]
+          }`,
+          type: "json",
+        },
+      },
+    },
+  ],
+  get: [
+    {
+      url: "/api/v1/verify/:walletAddress/:nftId",
+      description: "Verify the quanity of a specific Nft a gamer owns",
+      parameters: [
+        {
+          name: "walletAddress",
+          type: "string",
+          description: "the wallet of the gamer",
+        },
+        {
+          name: "nftId",
+          type: "string",
+          description: "Id of the NFT in the database",
+        },
+      ],
+      response: {
+        200: {
+          message: "nftQuantity",
+          type: "string",
+        },
+      },
+    },
+    {
+      url: "/api/v1/get-all-nfts",
+      description: "Retrieve all Nfts of the game",
+      response: {
+        200: {
+          message: `[
+              {nftObject}
+          ]` ,
+          type: "json",
+        },
+      },
+    },
+    {
+      url: "/api/v1/get-all-nfts/:walletAddress",
+      description: "Retrieve a gamer's Nfts",
+      parameters: [
+        {
+          name: "walletAddress",
+          type: "string",
+          description: "the wallet of the gamer",
+        }
+      ],
+      response: {
+        200: {
+          message: `{
+              wallet_address:string,
+              game_id:string,
+              quantity:{"nftID":quantity},
+              nfts:[{NftObject}]
+            }`,
+          type: "Json",
+        },
+      },
+    },
+  ],
+};
 
 
-const columns = [
+const inputColumns = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -10,72 +98,163 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Type',
+    dataIndex: 'type',
+    key: 'type',
+    render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
+    render: (text) => <a>{text}</a>,
+  },  
 ];
 
-const Api = () => <Table columns={columns} dataSource={data} />;
+const parametersColumns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: 'Type',
+    dataIndex: 'type',
+    key: 'type',
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
+    render: (text) => <a>{text}</a>,
+  },  
+];
+
+const responseColumns = [
+  {
+    title: 'Code',
+    dataIndex: 'code',
+    key: 'code',
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: 'Message',
+    dataIndex: 'message',
+    key: 'message',
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: 'Type',
+    dataIndex: 'type',
+    key: 'type',
+    render: (text) => <a>{text}</a>,
+  },  
+];
+
+const data= [{
+  code:200,
+  message: `
+          {
+              wallet_address: string ,
+              game_id: string,
+              quantity: {"nftID": int},
+              nfts: ["nftObject"]
+          }`,
+  type: "json",
+}]
+
+const data1= [{
+  code:200,
+  message: "nftQuantity",
+          type: "string",
+}]
+
+const data2= [{
+  code:200,
+  message: `[
+    {nftObject}
+]` ,
+type: "json",
+}]
+
+const data3= [{
+  code:200,
+  message: `{
+    wallet_address:string,
+    game_id:string,
+    quantity:{"nftID":quantity},
+    nfts:[{NftObject}]
+  }`,
+type: "Json",
+}]
+
+const genExtra = () => (
+  <div style={{gutter:"24"}}>
+  <span style={{color: 'green'}}> POST </span>
+  <span style={{fontWeight:'bold'}}>     /api/v1/gamer-sign-in </span>
+  <span>     login or register the gamer </span>
+  </div>
+);
+
+const genExtraa = () => (
+  <>
+  <span style={{color: 'green'}}> GET </span>
+  <span style={{fontWeight:'bold'}}>      /api/v1/verify/:walletAddress/:nftId </span>
+  <span>     Verify the quanity of a specific Nft a gamer owns </span>
+  </>
+);
+
+const genExtraaa = () => (
+  <>
+  <span style={{color: 'green'}}> GET </span>
+  <span style={{fontWeight:'bold'}}> /api/v1/get-all-nfts </span>
+  <span> Retrieve all Nfts of the game </span>
+  </>
+);
+
+const genExtraaaa = () => (
+  <>
+  <span style={{color: 'green'}}> GET </span>
+  <span style={{fontWeight:'bold'}}> /api/v1/get-all-nfts/:walletAddress</span>
+  <span> the wallet of the gamer </span>
+  </>
+);
+
+
+
+
+const Api = () => {
+  return (
+    <>
+    <Collapse accordion>
+      <Panel header={genExtra()} key="1">
+        <Table columns={inputColumns} dataSource={ApiReference.post[0].input} pagination={false} title={() => 'INPUT'}/>
+        <Table columns={responseColumns} dataSource={data} pagination={false} title={() => 'RESPONSE'}/>
+      </Panel>
+
+    <Panel header={genExtraa()} key="2">
+      <Table columns={parametersColumns} dataSource={ApiReference.get[0].parameters} pagination={false} title={() => 'Parameters'}/>
+      <Table columns={responseColumns} dataSource={data1} pagination={false} title={() => 'RESPONSE'}/>
+    </Panel>
+
+    <Panel header={genExtraaa()} key="3">
+      <Table columns={responseColumns} dataSource={data2} pagination={false} title={() => 'RESPONSE'}/>
+    </Panel>
+
+    <Panel header={genExtraaaa()} key="4">
+      <Table columns={parametersColumns} dataSource={ApiReference.get[2].parameters} pagination={false} title={() => 'Parameters'}/>
+      <Table columns={responseColumns} dataSource={data} pagination={false} title={() => 'RESPONSE'}/>
+    </Panel>
+  </Collapse>
+    </>
+  );
+};
+
 
 export default Api;
+
+
+
+

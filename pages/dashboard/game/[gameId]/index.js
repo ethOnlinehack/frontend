@@ -6,7 +6,7 @@ import Api from "./api";
 const Tab = () => {
   const items = [
     {
-      label: "Collection",
+      label: "NFT Collection",
       key: 1,
       children: <Collection />,
     },
