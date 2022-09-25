@@ -1,0 +1,47 @@
+.components-layout-demo-fixed .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .site-layout .site-layout-background {
+    background: #111927;
+  }
+
+.footeer{
+  width:100%;
+  //margin-bottom: 100px;
+
+  :global(.ant-menu){
+    background: #111927;
+  }
+  :global(.ant-layout-header){
+    background: #111927;
+    border-bottom: 1px solid #232B39;
+    padding: 0;
+  }
+  :global(.ant-menu-horizontal){
+    width:100%;
+    border-bottom: 1px solid #232B39;
+  }
+  :global(.ant-menu-submenu-selected){
+    color:#68d788;
+  }
+  :global(.ant-btn:focus){
+    border-color: #68d788;
+  }
+  :global(.ant-menu-title-content){
+    color:"white";
+     &:hover{
+       color:#68d788;
+     }
+  }
+  :global(.ant-menu-title-content){
+    color:"white";
+    &:hover{
+      color:#68d788;
+    }
+  }
+
+}
+
