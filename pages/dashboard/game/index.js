@@ -17,7 +17,7 @@ const Games = () => {
     getAllGames().then((data) => {
       setGames(data);
     });
-  }, [games]);
+  }, []);
 
   return (
     <div>
